@@ -13,6 +13,8 @@ export default class FIBPreview extends React.Component {
     this.fetchQuestion = this.fetchQuestion.bind(this);
   }
 
+  static navigationOptions = {title: "Preview"}
+
   componentDidMount() {
     this.setState({id: this.props.navigation.getParam("id")}, this.fetchQuestion)
   }
@@ -60,7 +62,7 @@ export default class FIBPreview extends React.Component {
           title = "Update Question"
           onPress = {() => this.props.navigation.navigate("updateFIB", {question: this.state.question, examId: this.state.examId})}
           titleStyle = {{color: "white"}}
-          buttonStyle = {{position: "relative", marginLeft: 10, backgroundColor: "rgb(103, 160, 252)", borderRadius: 5, borderColor: "transparent"}}
+          buttonStyle = {{position: "relative", marginLeft: 10, marginTop: 15, backgroundColor: "rgb(103, 160, 252)", borderRadius: 5, borderColor: "transparent"}}
           />
       </View>
     );

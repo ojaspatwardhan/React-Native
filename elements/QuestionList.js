@@ -28,8 +28,9 @@ export default class QuestionList extends React.Component {
     .then(this.fetchQuestions)
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(newProps) {
     console.log("inside componentWillReceiveProps")
+    this.fetchQuestions();
   }
 
   fetchQuestions() {

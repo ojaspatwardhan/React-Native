@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ScrollView, TextInput } from 'react-native';
-import { Icon, Button, Text, List, ListItem } from 'react-native-elements';
+import { FormLabel, FormInput, FormValidationMessage, Icon, Button, Text, List, ListItem } from 'react-native-elements';
 
 let questions = [
   {id: 1, title: "Question 1", subtitle: "MCQ"},
@@ -105,6 +105,7 @@ export default class ExamList extends React.Component {
               placeholder = {this.state.descriptionText}
               onChangeText = {(text) => this.setState({descriptionText: text})}
               />
+              <FormLabel>Points</FormLabel>
               <TextInput
                 style = {{backgroundColor: "white", borderColor: "gray", borderWidth: 1, height: 20, marginTop: 15}}
                 value = {this.state.points}
@@ -112,6 +113,9 @@ export default class ExamList extends React.Component {
                 placeholder = "Points"
                 onChangeText = {(text) => this.setState({points: text})}
                 />
+              <FormValidationMessage>
+                Points is required
+              </FormValidationMessage>
           <Button
             raised = {true}
             title = "Create Exam"

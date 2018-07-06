@@ -21,6 +21,8 @@ export default class AssignmentList extends React.Component {
     this.setAssignment = this.setAssignment.bind(this);
   }
 
+  static navigationOptions = {title: "Create Assignment"}
+
   componentDidMount() {
     const lessonId = this.props.navigation.getParam("lessonId", 1);
     this.setState({lessonId: lessonId});

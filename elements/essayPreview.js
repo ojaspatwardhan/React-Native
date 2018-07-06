@@ -12,6 +12,8 @@ export default class essayPreview extends React.Component {
     this.fetchQuestion = this.fetchQuestion.bind(this);
   }
 
+  static navigationOptions = {title: "Preview"}
+
   componentDidMount() {
     this.setState({id: this.props.navigation.getParam("id"), examId: this.props.navigation.getParam("examId")}, this.fetchQuestion)
   }
@@ -45,7 +47,7 @@ export default class essayPreview extends React.Component {
             title = "Update Question"
             onPress = {() => this.props.navigation.navigate("updateEssay", {question: this.state.question, examId: this.state.examId})}
             titleStyle = {{color: "white"}}
-            buttonStyle = {{position: "relative", marginLeft: 10, backgroundColor: "rgb(103, 160, 252)", borderRadius: 5, borderColor: "transparent"}}
+            buttonStyle = {{position: "relative", marginLeft: 10, marginTop: 15, backgroundColor: "rgb(103, 160, 252)", borderRadius: 5, borderColor: "transparent"}}
             />
       </View>
     );

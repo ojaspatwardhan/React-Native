@@ -14,6 +14,7 @@ export default class updateMCQ extends React.Component {
       correctOption: 0,
       examId: 1
     };
+    this.callbackFunction = this.callbackFunction.bind(this);
   }
 
   componentDidMount() {
@@ -63,12 +64,12 @@ export default class updateMCQ extends React.Component {
        method: 'PUT'
    }).then(function (response) {
       return response.json();
-    }).then(question => this.setState({question: question}, this.testFunction));
+    }).then(question => this.setState({question: question}, this.callbackFunction));
   }
 
-    testFunction() {
+    callbackFunction() {
       console.log(this.state.question)
-      this.props.navigation.navigate("QuestionList")
+      this.props.navigation.navigate("QuestionList", {status: "updated"})
     }
 
   render() {

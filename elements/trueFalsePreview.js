@@ -13,6 +13,8 @@ export default class essayPreview extends React.Component {
     this.fetchQuestion = this.fetchQuestion.bind(this);
   }
 
+  static navigationOptions = {title: "Preview"}
+
   componentDidMount() {
     this.setState({id: this.props.navigation.getParam("id"), examId: this.props.navigation.getParam("examId")}, this.fetchQuestion)
   }

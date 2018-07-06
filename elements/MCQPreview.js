@@ -13,6 +13,8 @@ export default class MCQPreview extends React.Component {
     this.fetchQuestion = this.fetchQuestion.bind(this);
   }
 
+  static navigationOptions = {title: "Preview"}
+
   componentDidMount() {
     this.setState({id: this.props.navigation.getParam("id")}, this.fetchQuestion)
   }

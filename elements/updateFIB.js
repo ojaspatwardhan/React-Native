@@ -14,7 +14,7 @@ export default class updateFIB extends React.Component {
       blanks: ""
     };
     this.updateQuestion = this.updateQuestion.bind(this);
-    this.testFunction = this.testFunction.bind(this);
+    this.callbackFunction = this.callbackFunction.bind(this);
   }
 
   componentDidMount() {
@@ -56,12 +56,12 @@ export default class updateFIB extends React.Component {
        method: 'PUT'
    }).then(function (response) {
       return response.json();
-    }).then(question => this.setState({question: question}, this.testFunction));
+    }).then(question => this.setState({question: question}, this.callbackFunction));
   }
 
-  testFunction() {
+  callbackFunction() {
     // console.log(this.state.question)
-    this.props.navigation.navigate("QuestionList")
+    this.props.navigation.navigate("QuestionList", {status: "updated"})
   }
 
   render() {

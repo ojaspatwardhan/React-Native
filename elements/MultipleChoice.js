@@ -123,7 +123,6 @@ export default class MultipleChoice extends React.Component {
                 />
           </View>
           <Text h3>Preview</Text>
-          <Text h4>{this.state.examId}</Text>
           <View style = {{flexDirection: "row"}}>
             <Text h4>{this.state.titleText}</Text>
             <Text h4 style = {{position: "relative", marginLeft: 15}}>{this.state.points}</Text>

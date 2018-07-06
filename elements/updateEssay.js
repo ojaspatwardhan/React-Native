@@ -14,7 +14,8 @@ export default class updateEssay extends React.Component {
       examId: 1
     };
     this.updateQuestion = this.updateQuestion.bind(this);
-    this.testFunction = this.testFunction.bind(this);
+    this.callbackFunction = this.callbackFunction.bind(this);
+    this.handleNavigation = this.handleNavigation.bind(this);
   }
 
   componentDidMount() {
@@ -54,12 +55,23 @@ export default class updateEssay extends React.Component {
        method: 'PUT'
    }).then(function (response) {
       return response.json();
-    }).then(question => this.setState({question: question}, this.testFunction));
+    }).then(question => this.setState({question: question}, this.callbackFunction));
   }
 
-  testFunction() {
+  handleNavigation() {
+    console.log("Inside handleNavigation")
+    const refreshFunction = this.props.navigation.state.params.refreshFunction;
+    console.log(refreshFunction)
+    console.log(typeof refreshFunction)
+    if(typeof refreshFunction === 'function') {
+      refreshFunction();
+      this.props.navigation.navigate("QuestionList");
+    }
+  }
+
+  callbackFunction() {
     // console.log(this.state.question)
-    this.props.navigation.navigate("QuestionList")
+    this.props.navigation.navigate("QuestionList", {status: "updated"})
   }
 
   render() {
