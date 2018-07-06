@@ -14,7 +14,7 @@ export default class LessonList extends React.Component {
 
   componentDidMount() {
     const moduleId = this.props.navigation.getParam("moduleId", 1);
-    fetch("http://192.168.1.2:8080/api/module/" + moduleId + "/lesson").then(response => (response.json())).then(lessons => {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/module/" + moduleId + "/lesson").then(response => (response.json())).then(lessons => {
       this.setState({lessons: lessons})
     })
   }

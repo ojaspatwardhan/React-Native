@@ -14,7 +14,7 @@ export default class ModuleList extends React.Component {
   componentDidMount() {
     const courseId = this.props.navigation.getParam("courseId", 1);
     this.setState({courseId: courseId});
-    fetch("http://192.168.1.2:8080/api/course/" + courseId + "/module", {method: "GET"}).then(response => (response.json())).then(modules => {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/course/" + courseId + "/module", {method: "GET"}).then(response => (response.json())).then(modules => {
       this.setState({modules: modules});
     })
   }

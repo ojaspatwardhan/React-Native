@@ -56,7 +56,7 @@ export default class updateMCQ extends React.Component {
 
   updateQuestion() {
     console.log(this.state.question);
-    fetch("http://192.168.1.2:8080/api/exam/" + this.props.navigation.getParam("question").id + "/choice", {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/exam/" + this.props.navigation.getParam("question").id + "/choice", {
        body: JSON.stringify(this.state.question),
        headers: {
           'Content-Type': 'application/json'

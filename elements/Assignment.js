@@ -26,12 +26,12 @@ export default class Assignment extends React.Component {
 
   fetchAssignments() {
     console.log(this.state.lessonId)
-    fetch("http://192.168.1.2:8080/api/lesson/" + this.state.lessonId + "/assignment")
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/lesson/" + this.state.lessonId + "/assignment")
     .then((response) => response.json()).then(assignments => this.setState({assignments: assignments}))
   }
 
   deleteAssignment(assignmentId) {
-    var deleteURL = "http://192.168.1.2:8080/api/assignment/AID"
+    var deleteURL = "https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/assignment/AID"
     deleteURL = deleteURL.replace("AID", assignmentId)
     console.log(deleteURL)
     fetch(deleteURL, {

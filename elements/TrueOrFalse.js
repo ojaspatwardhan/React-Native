@@ -41,7 +41,7 @@ export default class TrueOrFalse extends React.Component {
   createQuestion = () => {
     console.log("tf create question");
     console.log(this.state.isTrue);
-    fetch("http://192.168.1.2:8080/api/exam/" + this.state.examId + "/truefalse", {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/exam/" + this.state.examId + "/truefalse", {
        body: JSON.stringify(this.state.trueFalse),
        headers: {
           'Content-Type': 'application/json'

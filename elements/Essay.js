@@ -39,7 +39,7 @@ export default class Essay extends React.Component {
   createQuestion = () => {
     console.log("essay create question");
     console.log(this.state.essay.title);
-    fetch("http://192.168.1.2:8080/api/exam/" + this.state.examId + "/essay", {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/exam/" + this.state.examId + "/essay", {
        body: JSON.stringify(this.state.essay),
        headers: {
           'Content-Type': 'application/json'

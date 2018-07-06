@@ -47,7 +47,7 @@ export default class updateAssignment extends React.Component {
     console.log("Inside create")
     console.log(this.state.assignment)
     console.log(this.state.lessonId)
-    fetch("http://192.168.1.2:8080/api/lesson/" + this.props.navigation.getParam("lessonId") + "/assignment", {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/lesson/" + this.props.navigation.getParam("lessonId") + "/assignment", {
        body: JSON.stringify(this.state.assignment),
        headers: {
           'Content-Type': 'application/json'

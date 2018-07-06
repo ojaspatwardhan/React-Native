@@ -20,7 +20,7 @@ export default class FIBPreview extends React.Component {
   }
 
   fetchQuestion() {
-    fetch("http://192.168.1.2:8080/api/exam/" + this.state.id + "/blank")
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/exam/" + this.state.id + "/blank")
     .then((response) => response.json()).then(question => this.setState({question: question, blanks: question.blanks}, this.testFunction))
   }
 

@@ -39,7 +39,7 @@ export default class FillInTheBlanks extends React.Component {
 
   createQuestion = () => {
     console.log("fib create question");
-    fetch("http://192.168.1.2:8080/api/exam/" + this.state.examId + "/blank", {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/exam/" + this.state.examId + "/blank", {
        body: JSON.stringify(this.state.fillInTheBlanks),
        headers: {
           'Content-Type': 'application/json'

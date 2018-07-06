@@ -11,7 +11,7 @@ export default class CourseList extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://192.168.1.2:8080/api/course",{method: "GET"}).then(response => (response.json())).then(courses => {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/course",{method: "GET"}).then(response => (response.json())).then(courses => {
       this.setState({courses: courses});
     })
   }

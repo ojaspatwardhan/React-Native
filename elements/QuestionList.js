@@ -22,7 +22,7 @@ export default class QuestionList extends React.Component {
 
   deleteQuestion(questionId) {
     console.log("Inside delete " + questionId)
-    fetch("http://192.168.1.2:8080/api/exam/" + questionId + "/questions", {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/exam/" + questionId + "/questions", {
       method: "DELETE"
     })
     .then(this.fetchQuestions)
@@ -34,7 +34,7 @@ export default class QuestionList extends React.Component {
   }
 
   fetchQuestions() {
-    fetch("http://192.168.1.2:8080/api/exam/" + this.state.examId + "/questions")
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/exam/" + this.state.examId + "/questions")
     .then((response) => response.json()).then(questions => this.setState({questions: questions}))
     console.log("inside fetch questions " + this.state.questions)
   }

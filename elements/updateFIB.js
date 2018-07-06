@@ -48,7 +48,7 @@ export default class updateFIB extends React.Component {
 
   updateQuestion() {
     console.log(this.state.fillInTheBlanks);
-    fetch("http://192.168.1.2:8080/api/exam/" + this.props.navigation.getParam("question").id + "/blank", {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/exam/" + this.props.navigation.getParam("question").id + "/blank", {
        body: JSON.stringify(this.state.fillInTheBlanks),
        headers: {
           'Content-Type': 'application/json'

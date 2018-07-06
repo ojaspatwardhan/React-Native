@@ -35,13 +35,13 @@ export default class ExamList extends React.Component {
   fetchExams() {
     console.log(this.state.lessonId)
     console.log("inside fetch exams")
-    fetch("http://192.168.1.2:8080/api/lesson/" + this.state.lessonId + "/exam")
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/lesson/" + this.state.lessonId + "/exam")
     .then((response) => response.json()).then(exams => this.setState({exams: exams}, this.testFunction))
   }
 
   deleteExam(examId) {
     console.log("Inside delete " + examId)
-    fetch("http://192.168.1.2:8080/api/exam/" + examId, {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/exam/" + examId, {
       method: "DELETE"
     })
     .then(this.fetchExams)
@@ -61,7 +61,7 @@ export default class ExamList extends React.Component {
 
   createExam() {
     console.log("inside create")
-    fetch("http://192.168.1.2:8080/api/lesson/" + this.state.lessonId + "/exam", {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/lesson/" + this.state.lessonId + "/exam", {
        body: JSON.stringify(this.state.exam),
        headers: {
           'Content-Type': 'application/json'

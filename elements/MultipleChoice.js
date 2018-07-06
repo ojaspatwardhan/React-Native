@@ -49,7 +49,7 @@ export default class MultipleChoice extends React.Component {
   createQuestion() {
     console.log("inside create")
     console.log("Exam Id is" + this.state.examId)
-    fetch("http://192.168.1.2:8080/api/exam/" + this.state.examId + "/choice", {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/exam/" + this.state.examId + "/choice", {
        body: JSON.stringify(this.state.question),
        headers: {
           'Content-Type': 'application/json'

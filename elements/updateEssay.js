@@ -47,7 +47,7 @@ export default class updateEssay extends React.Component {
 
   updateQuestion() {
     console.log(this.state.essay);
-    fetch("http://192.168.1.2:8080/api/exam/" + this.props.navigation.getParam("question").id + "/essay", {
+    fetch("https://cs5610-summer-2018-pat-ojas.herokuapp.com/api/exam/" + this.props.navigation.getParam("question").id + "/essay", {
        body: JSON.stringify(this.state.essay),
        headers: {
           'Content-Type': 'application/json'
