@@ -91,6 +91,13 @@ export default class Assignment extends React.Component {
                     titleStyle = {{color: "white"}}
                     buttonStyle = {{position: "relative", right: 15, backgroundColor: "rgb(244, 66, 113)", borderRadius: 5, borderColor: "transparent"}}
                     />
+                    <Button
+                      raised = {true}
+                      title = "Update"
+                      onPress = {() => this.props.navigation.navigate("updateAssignment", {id: assignment.id, assignment: assignment, lessonId: this.state.lessonId})}
+                      titleStyle = {{color: "white"}}
+                      buttonStyle = {{position: "relative", right: 15, backgroundColor: "rgb(103, 160, 252)", borderRadius: 5, borderColor: "transparent"}}
+                      />
               </View>
             </View>
           </View>

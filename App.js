@@ -21,6 +21,7 @@ import updateEssay from './elements/updateEssay';
 import updateMCQ from './elements/updateMCQ';
 import updateTrueFalse from './elements/updateTrueFalse';
 import updateFIB from './elements/updateFIB';
+import updateAssignment from './elements/updateAssignment';
 
 class Home extends React.Component {
   constructor(props) {
@@ -62,7 +63,8 @@ const App = createStackNavigator({
   updateEssay,
   updateMCQ,
   updateTrueFalse,
-  updateFIB
+  updateFIB,
+  updateAssignment
 });
 
 export default App;

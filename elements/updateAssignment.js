@@ -1,67 +1,67 @@
 import React from 'react';
 import { Alert, View, StyleSheet, ScrollView, TextInput } from 'react-native';
-import { FormLabel, Text, List, ListItem, Button } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { FormLabel, FormInput, FormValidationMessage, Text, List, ListItem, Button } from 'react-native-elements';
 
-export default class AssignmentList extends React.Component {
+export default class updateAssignment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      titleText: "Enter title",
-      descriptionText: "Enter description",
+      titleText: "",
+      descriptionText: "",
       answerText: "Enter answer",
-      points: "0",
+      points: "",
       lessonId: 1,
-      assignments: []
+      assignment: {}
     };
-    this.assignmentService = AssignmentService.instance;
-    this.createAssignment = this.createAssignment.bind(this);
-    this.findAllAssignments = this.findAllAssignments.bind(this);
-    this.setAssignment = this.setAssignment.bind(this);
+    this.updateAssignment = this.updateAssignment.bind(this);
+    this.callbackFunction = this.callbackFunction.bind(this);
   }
-
-  static navigationOptions = {title: "Create Assignment"}
 
   componentDidMount() {
-    const lessonId = this.props.navigation.getParam("lessonId", 1);
-    this.setState({lessonId: lessonId});
+    console.log(this.props.navigation.getParam("assignment"))
+    console.log(this.props.navigation.getParam("lessonId"))
+    const lid = this.props.navigation.getParam("lessonId", 1);
+    this.setState({
+      lessonId: lid,
+      titleText: this.props.navigation.getParam("assignment").title,
+      descriptionText: this.props.navigation.getParam("assignment").description,
+      points: this.props.navigation.getParam("assignment").points
+    });
   }
 
-  setAssignment() {
+  setAssignment = () => {
+    console.log("inside set")
     this.setState({
       assignment: {
+        id: this.props.navigation.getParam("assignment").id,
+        lessonId: this.props.navigation.getParam("lessonId"),
         title: this.state.titleText,
         description: this.state.descriptionText,
         points: this.state.points,
         answer: this.state.answerText
       }
-    }, this.createAssignment);
+    }, this.updateAssignment);
   }
 
-  createAssignment() {
+  updateAssignment() {
     console.log("Inside create")
     console.log(this.state.assignment)
     console.log(this.state.lessonId)
-    fetch("http://192.168.1.2:8080/api/lesson/" + this.state.lessonId + "/assignment", {
+    fetch("http://192.168.1.2:8080/api/lesson/" + this.props.navigation.getParam("lessonId") + "/assignment", {
        body: JSON.stringify(this.state.assignment),
        headers: {
           'Content-Type': 'application/json'
        },
-       method: 'POST'
+       method: 'PUT'
    }).then(function (response) {
       return response.json();
-    }).then(Alert.alert("Assignment saved"));
+    }).then(assignment => this.setState({assignment: assignment}, this.callbackFunction));
    }
 
-   previewAssignments = () => {
-     this.props.navigation.navigate("Assignment", {lessonId: this.state.lessonId});
+   callbackFunction() {
+     console.log(this.state.question)
+     this.props.navigation.navigate("Assignment", {status: "updated"})
    }
-
-  findAllAssignments() {
-    this.assignmentService.findAllAssignments().then((assignments) => {
-      this.setState({assignments: assignments})
-    });
-  }
 
   render() {
     return(
@@ -116,39 +116,17 @@ export default class AssignmentList extends React.Component {
             <View style = {{marginTop: 10}}>
               <Text h4>Submit a link</Text>
               <TextInput style = {{marginTop: 10, backgroundColor: "white", borderColor: "gray", borderWidth: 1, height: 30}} />
-              <View style = {{marginBottom: 10, marginTop: 10, flexDirection: "row"}}>
-                <Button
-                  raised = {true}
-                  title = "Submit"
-                  titleStyle = {{color: "white"}}
-                  buttonStyle = {{position: "relative", right: 15, backgroundColor: "rgb(103, 160, 252)", borderRadius: 5, borderColor: "transparent"}}
-                  />
-                <Button
-                  raised = {true}
-                  title = "Cancel"
-                  onPress = {() => this.props.navigation.goBack()}
-                  titleStyle = {{color: "white"}}
-                  buttonStyle = {{position: "relative", right: 15, backgroundColor: "rgb(244, 66, 113)", borderRadius: 5, borderColor: "transparent"}}
-                  />
-                <Button
-                  onPress = {this.setAssignment}
-                  raised = {true}
-                  title = "Save Assignment"
-                  titleStyle = {{color: "white"}}
-                  buttonStyle = {{position: "relative", right: 15,backgroundColor: "rgb(72, 242, 112)", borderRadius: 5, borderColor: "transparent"}}
-                  />
-              </View>
               <Button
-                onPress = {this.previewAssignments}
                 raised = {true}
-                title = "Preview Assignments"
+                onPress = {this.setAssignment}
+                title = "Update Assignment"
                 titleStyle = {{color: "white"}}
                 iconRight = {{
-                  name: 'assignment',
+                  name: 'assignment-turned-in',
                   size: 20,
                   color: 'white'
                 }}
-                buttonStyle = {{position: "relative", marginBottom: 10, alignItems: "center", backgroundColor: "rgb(61, 234, 247)", borderRadius: 5, borderColor: "transparent"}}
+                buttonStyle = {{position: "relative", marginTop: 15, marginBottom: 10, alignItems: "center", backgroundColor: "rgb(61, 234, 247)", borderRadius: 5, borderColor: "transparent"}}
                 />
             </View>
           </View>
@@ -156,9 +134,3 @@ export default class AssignmentList extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  text: {
-    alignItems: 'center'
-  },
-});
