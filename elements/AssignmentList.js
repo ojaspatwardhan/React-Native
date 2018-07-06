@@ -14,9 +14,7 @@ export default class AssignmentList extends React.Component {
       lessonId: 1,
       assignments: []
     };
-    this.assignmentService = AssignmentService.instance;
     this.createAssignment = this.createAssignment.bind(this);
-    this.findAllAssignments = this.findAllAssignments.bind(this);
     this.setAssignment = this.setAssignment.bind(this);
   }
 
@@ -56,12 +54,6 @@ export default class AssignmentList extends React.Component {
    previewAssignments = () => {
      this.props.navigation.navigate("Assignment", {lessonId: this.state.lessonId});
    }
-
-  findAllAssignments() {
-    this.assignmentService.findAllAssignments().then((assignments) => {
-      this.setState({assignments: assignments})
-    });
-  }
 
   render() {
     return(
