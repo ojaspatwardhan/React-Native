@@ -40,13 +40,8 @@ class Home extends React.Component {
     return(
       <ScrollView>
         <StatusBar barStyle="dark-content" />
-        <FixedHeader />
         <View style={{padding: 20}}>
           <Button title="Courses" onPress={() => this.props.navigation.navigate("CourseList")} />
-          <TrueFalse />
-          <QuestionTypeButtons />
-          <QuestionTypePicker />
-          <Exam />
         </View>
       </ScrollView>
     );
