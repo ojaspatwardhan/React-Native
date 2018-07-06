@@ -25,8 +25,8 @@ export default class Options extends React.Component {
 
   render() {
     const buttons = [
-      "Create Assignment",
-      "Create Exam"
+      "Assignment",
+      "Exam"
     ]
     return(
       <ScrollView>

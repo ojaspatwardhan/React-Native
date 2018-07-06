@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, ScrollView, Button } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, ScrollView } from 'react-native';
+import { Button } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation';
 import CourseList from './elements/CourseList';
 import ModuleList from './elements/ModuleList';
@@ -35,7 +36,18 @@ class Home extends React.Component {
       <ScrollView>
         <StatusBar barStyle="dark-content" />
         <View style={{padding: 20}}>
-          <Button title="Courses" onPress={() => this.props.navigation.navigate("CourseList")} />
+          <Button
+            onPress={() => this.props.navigation.navigate("CourseList")}
+            raised = {true}
+            title = "Courses"
+            titleStyle = {{color: "white"}}
+            iconRight = {{
+              name: 'assignment-ind',
+              size: 20,
+              color: 'white'
+            }}
+            buttonStyle = {{position: "relative", marginTop: 10, alignItems: "center", backgroundColor: "rgb(50, 242, 235)", borderRadius: 5, borderColor: "transparent"}}
+            />
         </View>
       </ScrollView>
     );

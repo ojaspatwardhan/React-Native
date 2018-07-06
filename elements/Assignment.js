@@ -82,7 +82,7 @@ export default class Assignment extends React.Component {
                   raised = {true}
                   title = "Submit"
                   titleStyle = {{color: "white"}}
-                  buttonStyle = {{position: "relative", right: 15, backgroundColor: "rgb(103, 160, 252)", borderRadius: 5, borderColor: "transparent"}}
+                  buttonStyle = {{position: "relative", right: 10, backgroundColor: "rgb(103, 160, 252)", borderRadius: 5, borderColor: "transparent"}}
                   />
                   <Button
                     raised = {true}
@@ -96,7 +96,7 @@ export default class Assignment extends React.Component {
                       title = "Update"
                       onPress = {() => this.props.navigation.navigate("updateAssignment", {id: assignment.id, assignment: assignment, lessonId: this.state.lessonId})}
                       titleStyle = {{color: "white"}}
-                      buttonStyle = {{position: "relative", right: 15, backgroundColor: "rgb(103, 160, 252)", borderRadius: 5, borderColor: "transparent"}}
+                      buttonStyle = {{position: "relative", right: 20, backgroundColor: "rgb(53, 234, 132)", borderRadius: 5, borderColor: "transparent"}}
                       />
               </View>
             </View>
