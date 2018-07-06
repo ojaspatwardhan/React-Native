@@ -1,13 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar, ScrollView, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
-import FixedHeader from './elements/FixedHeader';
-import TextHeadings from './elements/TextHeadings';
-import Icons from "./elements/Icons";
-import Exam from "./elements/Exam";
-import QuestionTypeButtons from './elements/QuestionTypeButtons';
-import QuestionTypePicker from './elements/QuestionTypePicker';
-import TrueFalse from './elements/TrueFalse';
 import CourseList from './elements/CourseList';
 import ModuleList from './elements/ModuleList';
 import LessonList from './elements/LessonList';
